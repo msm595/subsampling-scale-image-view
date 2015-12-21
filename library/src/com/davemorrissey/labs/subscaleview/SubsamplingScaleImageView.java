@@ -196,6 +196,8 @@ public class SubsamplingScaleImageView extends View {
     private int sOrientation;
     private Rect sRegion;
     private Rect pRegion;
+    private int cWidth;
+    private int cHeight;
 
     // Is two-finger zooming in progress
     private boolean isZooming;
@@ -1383,6 +1385,11 @@ public class SubsamplingScaleImageView extends View {
         }
     }
 
+    public void setMaxDimensions(int width, int height) {
+        cWidth = width;
+        cHeight = height;
+    }
+
     /**
      * Async task used to get image details without blocking the UI thread.
      */
@@ -1461,7 +1468,9 @@ public class SubsamplingScaleImageView extends View {
         this.sHeight = sHeight;
         this.sOrientation = sOrientation;
         checkReady();
-        checkImageLoaded();
+        if (!checkImageLoaded() && cWidth != 0 && cHeight != 0) {
+            initialiseBaseLayer(new Point(cWidth, cHeight));
+        }
         invalidate();
         requestLayout();
     }

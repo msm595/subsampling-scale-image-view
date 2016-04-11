@@ -762,8 +762,10 @@ public class SubsamplingScaleImageView extends View {
                             fitToBounds(true);
                             if (!isVerticalScrollingParent) {
                                 boolean atXEdge = lastX != vTranslate.x;
-                                boolean edgeXSwipe = atXEdge && dx > dy && !isPanning;
-                                boolean yPan = lastY == vTranslate.y && dy > 15;
+                                // dx*0.5 so it's similar to ViewPager class
+                                boolean edgeXSwipe = atXEdge && dx*0.5 > dy && !isPanning;
+                                // dy > 5 allows for better diagonally panning than > 15
+                                boolean yPan = lastY == vTranslate.y && dy > 5;
 
                                 if (!edgeXSwipe && (!atXEdge || yPan || isPanning)) {
                                     isPanning = true;
@@ -775,8 +777,9 @@ public class SubsamplingScaleImageView extends View {
                                 }
                             } else {
                                 boolean atYEdge = lastY != vTranslate.y;
-                                boolean edgeYSwipe = atYEdge && dy > dx && !isPanning;
-                                boolean xPan = lastX == vTranslate.x && dx > 15;
+                                // same values as for the horizontal version
+                                boolean edgeYSwipe = atYEdge && dy*0.5 > dx && !isPanning;
+                                boolean xPan = lastX == vTranslate.x && dx > 5;
 
                                 if (!edgeYSwipe && (!atYEdge || xPan || isPanning)) {
                                     isPanning = true;

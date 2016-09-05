@@ -762,14 +762,14 @@ public class SubsamplingScaleImageView extends View {
                             fitToBounds(true);
                             if (!isVerticalScrollingParent) {
                                 boolean atXEdge = lastX != vTranslate.x;
-                                // dx*0.5 so it's similar to ViewPager class
-                                boolean edgeXSwipe = atXEdge && dx*0.5 > dy && !isPanning;
-                                // dy > 5 allows for better diagonally panning than > 15
-                                boolean yPan = lastY == vTranslate.y && dy > 5;
+                                // dx*0.25 is more natural for thumb movement
+                                boolean edgeXSwipe = atXEdge && dx*0.20 > dy && !isPanning;
+                                // dy > 1.5 is more natural for quick and small thumb movement
+                                boolean yPan = lastY == vTranslate.y && dy > 1.5;
 
                                 if (!edgeXSwipe && (!atXEdge || yPan || isPanning)) {
                                     isPanning = true;
-                                } else if (dx > 5) {
+                                } else if (dx > 3.0) {
                                     // Haven't panned the image, and we're at the left or right edge. Switch to page swipe.
                                     maxTouchCount = 0;
                                     handler.removeMessages(MESSAGE_LONG_CLICK);
@@ -778,12 +778,12 @@ public class SubsamplingScaleImageView extends View {
                             } else {
                                 boolean atYEdge = lastY != vTranslate.y;
                                 // same values as for the horizontal version
-                                boolean edgeYSwipe = atYEdge && dy*0.5 > dx && !isPanning;
-                                boolean xPan = lastX == vTranslate.x && dx > 5;
+                                boolean edgeYSwipe = atYEdge && dy*0.20 > dx && !isPanning;
+                                boolean xPan = lastX == vTranslate.x && dx > 1.5;
 
                                 if (!edgeYSwipe && (!atYEdge || xPan || isPanning)) {
                                     isPanning = true;
-                                } else if (dy > 5) {
+                                } else if (dy > 3.0) {
                                     // Haven't panned the image, and we're at the top or bottom edge. Switch to page swipe.
                                     maxTouchCount = 0;
                                     handler.removeMessages(MESSAGE_LONG_CLICK);

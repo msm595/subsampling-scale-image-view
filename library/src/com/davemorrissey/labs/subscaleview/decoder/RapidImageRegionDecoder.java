@@ -33,7 +33,12 @@ public class RapidImageRegionDecoder implements ImageRegionDecoder {
     @Override
     public synchronized Bitmap decodeRegion(Rect sRect, int sampleSize) {
         try {
-            return decoder.reset().region(sRect).scale(sRect.width() / sampleSize, sRect.height() / sampleSize).decode();
+            return decoder.reset()
+                    .useBuiltInDecoder(true)
+                    .config(Bitmap.Config.RGB_565)
+                    .region(sRect)
+                    .scale(sRect.width() / sampleSize, sRect.height() / sampleSize)
+                    .decode();
         } catch (Exception e) {
             throw new RuntimeException("Rapid image decoder returned null bitmap - image format may not be supported");
         }

@@ -34,7 +34,6 @@ public class RapidImageRegionDecoder implements ImageRegionDecoder {
     public synchronized Bitmap decodeRegion(Rect sRect, int sampleSize) {
         try {
             return decoder.reset()
-                    .useBuiltInDecoder()
                     .config(Bitmap.Config.RGB_565)
                     .region(sRect)
                     .scale(sRect.width() / sampleSize, sRect.height() / sampleSize)

@@ -5,14 +5,14 @@ version = '3.5.0'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'com.android.support:support-annotations:25.0.0'
+    compile 'com.android.support:support-annotations:25.0.1'
     compile 'com.github.suckgamony.RapidDecoder:library:7cdfca4'
-    compile 'com.github.seven332:image:0.2.8'
+    compile 'com.github.seven332:image:f8b2322'
 }
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.1"
 
     sourceSets {
         main {

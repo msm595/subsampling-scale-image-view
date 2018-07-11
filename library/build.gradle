@@ -6,10 +6,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     compile 'com.android.support:support-annotations:25.0.1'
     compile 'com.github.inorichi.RapidDecoder:library:7200cc4'
-    compile 'com.github.msm595.Image:core:737323123b'
-    compile 'com.github.msm595.Image:gif:737323123b'
-    compile 'com.github.msm595.Image:jpeg:737323123b'
-    compile 'com.github.msm595.Image:png:737323123b'
+    compile 'com.github.msm595.Image:core:testing-SNAPSHOT'
+    compile 'com.github.msm595.Image:gif:testing-SNAPSHOT'
+    compile 'com.github.msm595.Image:jpeg:testing-SNAPSHOT'
+    compile 'com.github.msm595.Image:png:testing-SNAPSHOT'
     compile 'com.github.inorichi:tachimage:68cd311'
 }
 

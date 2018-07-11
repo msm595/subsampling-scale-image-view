@@ -6,10 +6,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     compile 'com.android.support:support-annotations:25.0.1'
     compile 'com.github.inorichi.RapidDecoder:library:7200cc4'
-    compile 'com.github.msm595.Image:core:seperate-compilation-modules-SNAPSHOT'
-    compile 'com.github.msm595.Image:jpeg:seperate-compilation-modules-SNAPSHOT'
-    compile 'com.github.msm595.Image:png:seperate-compilation-modules-SNAPSHOT'
-    compile 'com.github.msm595.Image:gif:seperate-compilation-modules-SNAPSHOT'
+    compile 'com.github.msm595.Image:singlelib:separate-modules-SNAPSHOT'
     compile 'com.github.inorichi:tachimage:68cd311'
 }
 
